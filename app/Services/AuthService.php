@@ -20,7 +20,7 @@ class AuthService
 
   public function register(array $data)
   {
-    \App\Models\User::create([
+    User::create([
       'name' => $data['firstName'] . ' ' . $data['lastName'],
       'first_name' => $data['firstName'],
       'last_name' => $data['lastName'],
