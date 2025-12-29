@@ -17,4 +17,10 @@ class Field extends Model
     'made_by',
     'crops_planted',
   ];
+  public function farmers() {
+    return $this->hasMany(FieldFarmer::class, 'field_id');
+  }
+  public function currentDectect() {
+    return $this->hasOne(FieldCurrentDectect::class, 'field_id');
+  }
 }
