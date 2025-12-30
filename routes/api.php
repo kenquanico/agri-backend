@@ -12,4 +12,3 @@ Route::middleware(['auth:sanctum'])->get('/fields', [\App\Http\Controllers\Field
 
 Route::post('/detection', [\App\Http\Controllers\DetectionController::class, 'detect'])->name('detection.detect');
 
-Route::get('/detection/response', [\App\Http\Controllers\DetectionController::class, 'response']);

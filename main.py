@@ -45,12 +45,13 @@ async def detect(data: ImageRequest):
         confidences = results[0].boxes.conf.tolist() if hasattr(results[0].boxes, 'conf') else []
 
         for box, cls, conf in zip(boxes, classes, confidences):
-            class_name = model.names[int(cls)] if model.names else str(int(cls))
-            detections.append({
-                "box": box,          # [x1, y1, x2, y2]
-                "class": class_name, # detected class
-                "confidence": conf   # confidence score (0-1)
-            })
+            if conf >= 0.2:
+                class_name = model.names[int(cls)] if model.names else str(int(cls))
+                detections.append({
+                    "box": box,
+                    "class": class_name,
+                    "confidence": conf
+                })
 
         return {"detections": detections}
 

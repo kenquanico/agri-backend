@@ -37,29 +37,4 @@ class DetectionController extends Controller
     ]);
   }
 
-  public function response()
-  {
-
-    $response = new StreamedResponse(function () {
-      while (true) {
-        $data = [
-          'detected' => rand(0,1) === 1, // demo random
-          'confidence' => rand(50, 100) / 100,
-          'boxes' => []
-        ];
-
-        echo "data: " . json_encode($data) . "\n\n";
-        ob_flush();
-        flush();
-
-        sleep(1); // send every second
-      }
-    });
-
-    $response->headers->set('Content-Type', 'text/event-stream');
-    $response->headers->set('Cache-Control', 'no-cache');
-    $response->headers->set('Connection', 'keep-alive');
-
-    return $response;
-  }
 }
