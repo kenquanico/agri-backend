@@ -36,5 +36,4 @@ class DetectionController extends Controller
       'data' => $result,
     ]);
   }
-
 }
